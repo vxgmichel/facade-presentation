@@ -210,6 +210,34 @@ Event configuration
 
 
 ---
+
+Example - a simplified vacuum system
+------------------------------------
+
+```
+Low-level devices          High-level devices               Clients
+
+ +--------------+           +--------------+            +--------------+
+ |    Pump      |           |     Ion      +----------->+              |
+ |              +---------->+              |            |  Archiving   |
+ | Controllers  |     +---->+    Pumps     +-----+  +-->+              |
+ +--------------+     |     +--------------+     |  |   +--------------+
+                      |                          |  |
+                      |                       +-----+
+                      |                       |  |
+ +--------------+     |     +--------------+  |  |      +--------------+
+ |              +-----+     |    Vaccum    +--+  +----->+              |
+ |     PLC      |           |              |            |  Monitoring  |
+ |              +---------->+    valves    +----------->+              |
+ +--------------+           +--------------+            +--------------+
+
+               Periodic events              Archive events
+                     or                         and
+                Change events               Change events
+
+```
+
+---
 layout: true
 
 3. The facade device library
@@ -232,6 +260,9 @@ Events +--->+   React!   +----> Events 
 
 ---
 class: top, left
+
+Presentation
+------------
 
 - Descriptive library for high-level tango devices
 
@@ -256,15 +287,15 @@ Example (C := A + B)
 -------------------
 
 ``` python
-class Addtion(Facade):
+class Addition(Facade):
 
     A = proxy_attribute(
         dtype=float,
-        property_name='AAttribute')
+        property_name='AttributeA')
 
     B = proxy_attribute(
         dtype=float,
-        property_name='BAttribute')
+        property_name='AttributeB')
 
     @logical_attribute(
         dtype=float,

@@ -233,6 +233,25 @@ Events +--->+   React!   +----> Events 
 ---
 class: top, left
 
+- Descriptive library for high-level tango devices
+
+- Based on device inheritance (avoid duplication)
+
+- Fully event-based (subscribing and pushing)
+
+- Similar to PyAttributeProcessor with explicit definitions
+
+- About 30 device classes for MAX-IV, mostly actuators and sensors
+
+- Standard logging and reporting
+
+- Implement reactive patterns
+
+- Make it easy for users to write devices by hiding the technical aspects
+
+
+---
+
 Example (C := A + B)
 -------------------
 
